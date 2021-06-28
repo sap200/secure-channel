@@ -78,7 +78,7 @@ func handleConnection(conn net.Conn) {
 
 	// Line open start communicating
 	// line is on communicate using bufio
-	fmt.Println("🔒 your channel is now secured using RSA cryptography")
+	fmt.Println("🔒 your channel is now secured using RSA cryptography ✔️")
 	fmt.Println()
 	go utils.Read(conn)
 	go utils.Write(conn)
