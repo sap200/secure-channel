@@ -77,8 +77,21 @@ $ ./secure-channel -command client -ip 192.168.3.237 -port 1234
 
 ```
 
+## Use over WAN
 
-😊 your secure channel is established. Enjoy your secret conversation with no eavesdropping.
+```
+$ ./secure-channel -command server -ip localhost -port 8080
+```
+
+Open router page and set port forwarding and map port 8080 to internal port 8080
+
+Then execute following command 
+
+```
+$ ./secure-channel -command client -ip <<your-public-ip-address>> -port 8080
+```
+
+😊 your secure channel is established over internet. Enjoy your secret conversation with no eavesdropping.
 
 ## Internals
 
