@@ -95,5 +95,5 @@ func fail(conn net.Conn, message string) {
 	}
 	io.WriteString(conn, bs)
 	conn.Close()
-	fmt.Println("closed connection...")
+	fmt.Println("❌ Handshake Failed closed connection")
 }
