@@ -23,15 +23,15 @@ you can directly install the binary
 For linux
 
 ```
-curl https://github.com/sap200/secure-channel/releases/download/v0.1-beta/secure-channel
+$ curl https://github.com/sap200/secure-channel/releases/download/v0.1-beta/secure-channel
 
-sudo mv secure-channel /usr/local/bin
+$ sudo mv secure-channel /usr/local/bin
 ```
 
 For Windows
 
 ```
-curl https://github.com/sap200/secure-channel/releases/download/v0.1-beta/secure-channel.exe
+C:\users>curl https://github.com/sap200/secure-channel/releases/download/v0.1-beta/secure-channel.exe
 ```
 
 ## Usage
@@ -57,12 +57,77 @@ Usage of ./secure-channel:
 For Server
 
 ```
-./secure-channel -command server -ip <ipv4> -port <PORT>
+$ ./secure-channel -command server -ip <ipv4> -port <PORT>
 ```
 
 For Client 
 
 ```
-./secure-channel -command client -ip <ipv4> -port <PORT>
+$ ./secure-channel -command client -ip <ipv4> -port <PORT>
 ```
+
+## Use over local network
+
+```
+$ ./secure-channel -command server -ip localhost -port 8080
+
+$ socat tcp-listen:1234,fork,reuseaddr tcp:127.0.0.1:8080
+
+$ ./secure-channel -command client -ip 192.168.3.237 -port 1234
+
+```
+
+
+😊 your secure channel is established. Enjoy your secret conversation with no eavesdropping.
+
+## Internals
+
+### Packets
+
+Packet Interface
+
+```go
+type Packet interface {
+	Marshall() (string, error)
+}
+```
+
+Syn Packet
+
+``` go
+type SynPacket struct {
+	PubKey  rsa.PublicKey `json:"pub_key"`
+	Message string        `json:"message"`
+}
+```
+
+Acknowledgement packet
+
+``` go
+type AckPacket struct {
+	AckStatus int64         `json:"ack_status"`
+	PubKey    rsa.PublicKey `json:"pub_key"`
+	Message   string        `json:"message"`
+}
+```
+
+Message Packet
+
+```go
+type MsgPacket struct {
+	Cipher    []byte `json:"cipher"`
+	Signature []byte `json:"signature"`
+}
+```
+
+## Acknowledgement status
+
+```go
+const (
+	AckFail = iota
+	AckSuccess
+)
+```
+
+
 
