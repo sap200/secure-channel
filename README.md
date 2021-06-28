@@ -9,7 +9,7 @@ Secure channel provides a secure means of communicating where eavesdropping is n
 ## Installation
 
 ```
-$ git clone github.com/sap200/secure-channel
+$ git clone --single-branch --branch master github.com/sap200/secure-channel
 
 $ cd secure-channel
 
