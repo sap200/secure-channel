@@ -64,6 +64,7 @@ func DialServer(address string) {
 		// unexpected close connection
 		fmt.Println("Unable to unmarshal ack packet")
 		conn.Close()
+		panic(err)
 	}
 
 	// check if ack packet is alright
@@ -71,6 +72,7 @@ func DialServer(address string) {
 		// unable to connect
 		fmt.Println("Ack Failed..")
 		conn.Close()
+		panic(err)
 	}
 
 	// store the public key
