@@ -1,7 +1,7 @@
 # secure-channel
 
 <p align="center">
-  <img src="./secc.png" align="center"/>
+  <img src="./assets/secc.png" align="center"/>
 </p>
 
 Secure channel provides a secure means of communicating where eavesdropping is not possible, and it happens through secure RSA Encryption 
@@ -95,9 +95,19 @@ $ ./secure-channel -command client -ip <<your-public-ip-address>> -port 8080
 
 ## Demo Run
 
+Server
+
 <p align="center">
-	<img src="./secure-channel.png" />
+	<img src="./assets/secure-channel.png" />
 </p>
+
+Client
+
+<p align="center">
+	<img src="./assets/client.PNG" />	
+</p>
+
+
 
 ## Internals
 
