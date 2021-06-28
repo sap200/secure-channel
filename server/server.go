@@ -34,6 +34,9 @@ func LaunchServer(address string) {
 	}
 }
 
+// Handle connection handles the initial handshake packets sent for establishing secure channel
+// once the handshake is compelted and secure connection is established
+// handle connection launches 2 go routines one for reading from and another for writing to the connection respectively.
 func handleConnection(conn net.Conn) {
 	fmt.Println("🔗 Got an incoming connection from", conn.RemoteAddr().String())
 	fmt.Println("🚧 Establishing secure connection with", conn.RemoteAddr().String())
@@ -80,6 +83,7 @@ func handleConnection(conn net.Conn) {
 
 }
 
+// When the handshake fails fail writes the acknowledgement fail packet to the connection.
 func fail(conn net.Conn, message string) {
 	ackPacket := packets.NewAckPacket(packets.AckFail, generator.PublicKey, message)
 	bs, err := ackPacket.Marshall()
