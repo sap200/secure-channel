@@ -1,3 +1,4 @@
+// utility functions usually involoving reading and writing from connection
 package utils
 
 import (
@@ -18,10 +19,13 @@ import (
 	"github.com/sap200/secure-channel/store"
 )
 
+// color variables to render colored output in linux for easy understanding of message sendeer
 var Green = "\033[32m"
 var Reset = "\033[0m"
 var Blue = "\033[36m"
 
+// Read reads from the incoming connection and renders it into the terminal
+// It decodes the incoming bytes to Message Packet
 func Read(conn net.Conn) {
 	for {
 		b, err := bufio.NewReader(conn).ReadString('\n')
@@ -65,6 +69,8 @@ func Read(conn net.Conn) {
 	}
 }
 
+// Function write reads the user input and writes it back to the connection
+// The connection object is passed as an argument to this function
 func Write(conn net.Conn) {
 	reader := bufio.NewReader(os.Stdin)
 	for {

@@ -1,3 +1,5 @@
+// Package generator
+// generates new private and public key pair for client or server
 package generator
 
 import (

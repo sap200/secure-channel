@@ -1,3 +1,5 @@
+// Package server contains the initial code
+// to launch the server and handle the handshake packets
 package server
 
 import (
@@ -13,6 +15,7 @@ import (
 	"github.com/sap200/secure-channel/utils"
 )
 
+// Starts listening on a port for incoming connections
 func LaunchServer(address string) {
 	ln, err := net.Listen("tcp", address)
 	if err != nil {

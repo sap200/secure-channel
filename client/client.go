@@ -1,3 +1,6 @@
+// package client dials the server and
+// sends a syn packet and decodes the acknowledgement packet
+// to establish a secure channel among them
 package client
 
 import (
@@ -16,6 +19,13 @@ import (
 
 var wg sync.WaitGroup
 
+// Dial server dials a server with given address
+// Then sends a Syn Packet to them
+// Receives a Acknowledgement packet
+// Decodes the ack packet
+// If Ack Status is success
+// It launches 2 go routines one for reading from the server
+// and another for writing to the server.
 func DialServer(address string) {
 	fmt.Println("🚧 Establishing secure connection with", address)
 	conn, err := net.Dial("tcp", address)
