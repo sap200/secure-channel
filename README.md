@@ -1,7 +1,7 @@
 # secure-channel
 
 <p>
-  <img src="./rsa.jpg" />
+  <img src="./sc.png" align="center"/>
 </p>
 
 Secure channel provides a secure means of communicating where eavesdropping is not possible, and it happens through secure RSA Encryption 
