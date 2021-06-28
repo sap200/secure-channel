@@ -93,6 +93,12 @@ $ ./secure-channel -command client -ip <<your-public-ip-address>> -port 8080
 
 😊 your secure channel is established over internet. Enjoy your secret conversation with no eavesdropping.
 
+## Demo Run
+
+<p align="center">
+	<img src="./secure-channel.png" />
+</p>
+
 ## Internals
 
 ### Packets
