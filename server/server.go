@@ -47,6 +47,7 @@ func handleConnection(conn net.Conn) {
 	b, err := bufio.NewReader(conn).ReadString('\n')
 	if err != nil {
 		// unable to read public key
+		fmt.Println("Connection closed: ", err)
 		fail(conn, "Failed: Unable to read from connection")
 		return
 	}
@@ -54,6 +55,7 @@ func handleConnection(conn net.Conn) {
 	var synPack packets.SynPacket
 	err = json.Unmarshal([]byte(b), &synPack)
 	if err != nil {
+		fmt.Println("connection closed: ", err)
 		fail(conn, "Failed: Unable to marshal")
 		return
 	}
