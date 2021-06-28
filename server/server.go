@@ -4,6 +4,7 @@ package server
 
 import (
 	"bufio"
+	"crypto/rsa"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -85,7 +86,8 @@ func handleConnection(conn net.Conn) {
 
 // When the handshake fails fail writes the acknowledgement fail packet to the connection.
 func fail(conn net.Conn, message string) {
-	ackPacket := packets.NewAckPacket(packets.AckFail, generator.PublicKey, message)
+	var x rsa.PublicKey
+	ackPacket := packets.NewAckPacket(packets.AckFail, x, message)
 	bs, err := ackPacket.Marshall()
 	if err != nil {
 		panic(err)
