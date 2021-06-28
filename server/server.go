@@ -55,7 +55,6 @@ func handleConnection(conn net.Conn) {
 	var synPack packets.SynPacket
 	err = json.Unmarshal([]byte(b), &synPack)
 	if err != nil {
-		fmt.Println("connection closed: ", err)
 		fail(conn, "Failed: Unable to marshal")
 		return
 	}
