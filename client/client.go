@@ -79,7 +79,7 @@ func DialServer(address string) {
 	store.Store[conn.RemoteAddr().String()] = ackPack.PubKey
 
 	// start communicating
-	fmt.Println("🔒  your channel is now secured using RSA cryptography ✔️")
+	fmt.Println("🔒 your channel is now secured using RSA cryptography ✔️")
 	fmt.Println()
 	wg.Add(2)
 
