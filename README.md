@@ -1,6 +1,6 @@
 # secure-channel
 
-<p>
+<p align="center">
   <img src="./secc.png" align="center"/>
 </p>
 
