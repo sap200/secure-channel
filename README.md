@@ -91,6 +91,46 @@ Then execute following command
 $ ./secure-channel -command client -ip <<your-public-ip-address>> -port 8080
 ```
 
+### In case you are using a public router, and you don't have access to router page do the following
+
+- download ngrok from https://dashboard.ngrok.com/get-started/setup
+- unzip ngrok
+
+```
+$ ./ngrok authtoken <<YOUR AUTH TOKEN>>
+
+$ ./ngrok tcp 8080
+
+output
+
+ngrok by @inconshreveable                                                                    (Ctrl+C to quit)
+
+                                                                                                             
+Session Status                online                                                                         
+
+Account                       <<your-email>> (Plan: Free)                                            
+
+Version                       2.3.40                                                                         
+
+Region                        United States (us)                                                             
+
+Web Interface                 http://127.0.0.1:4040                                                          
+
+Forwarding                    tcp://6.tcp.ngrok.io:17474 -> localhost:8080                                   
+
+                                                                                                             
+
+Connections                   ttl     opn     rt1     rt5     p50     p90                                    
+
+                              1       1       0.00    0.00    0.01    0.01 
+```
+
+- copy Forwarding address without tcp 6.tcp.ngrok.io:17474 and execute the following command
+
+```
+$ ./secure-channel -command client -ip 6.tcp.ngrok.io -port 17474
+```
+
 😊 your secure channel is established over internet. Enjoy your secret conversation with no eavesdropping.
 
 ## Demo Run
